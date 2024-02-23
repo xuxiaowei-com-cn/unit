@@ -35,7 +35,7 @@ build:
       - .m2/repository
   rules:
     - changes:
-        - src/**
+        - src/**/**
         - .gitlab-ci.yml
         - pom.xml
 
