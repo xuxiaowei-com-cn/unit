@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
  *
  * <p>
  * <table border="1">
+ * <caption>Data Size</caption>
  * <tr><th>Term</th><th>Data Size</th><th>Size in Bytes</th></tr>
  * <tr><td>byte</td><td>1B</td><td>1</td></tr>
  * <tr><td>kilobyte</td><td>1KB</td><td>1,024</td></tr>

@@ -26,6 +26,7 @@ package cn.com.xuxiaowei.utils.unit;
  *
  * <p>
  * <table border="1">
+ * <caption>Data Unit</caption>
  * <tr><th>Constant</th><th>Data Size</th><th>Power&nbsp;of&nbsp;2</th><th>Size in Bytes</th></tr>
  * <tr><td>{@link #BYTES}</td><td>1B</td><td>2^0</td><td>1</td></tr>
  * <tr><td>{@link #KILOBYTES}</td><td>1KB</td><td>2^10</td><td>1,024</td></tr>
