@@ -263,6 +263,9 @@ public final class DataSize implements Comparable<DataSize>, Serializable {
 	 * @author xuxiaowei
 	 */
     public String toStringLongUnit() {
+		if (this.bytes == 0) {
+			return "0B";
+		}
 
         long b;
 

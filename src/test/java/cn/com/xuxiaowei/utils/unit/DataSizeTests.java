@@ -12,6 +12,8 @@ class DataSizeTests {
 
     @Test
     void toStringUnit() {
+        assertThat(DataSize.ofBytes(0).toStringUnit()).isEqualTo("0B");
+
         assertThat(DataSize.ofBytes(1_000).toStringUnit()).isEqualTo("1000B");
         assertThat(DataSize.ofBytes(10_000).toStringUnit()).isEqualTo("9K");
         assertThat(DataSize.ofBytes(10_000_000).toStringUnit()).isEqualTo("9M");
@@ -21,6 +23,8 @@ class DataSizeTests {
 
     @Test
     void toStringLongUnit() {
+        assertThat(DataSize.ofBytes(0).toStringLongUnit()).isEqualTo("0B");
+
         assertThat(DataSize.ofBytes(1L).toStringLongUnit()).isEqualTo("1B");
 
         assertThat(DataSize.ofBytes(2L * 1024).toStringLongUnit()).isEqualTo("2K");
