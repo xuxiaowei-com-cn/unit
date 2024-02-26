@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.com.xuxiaowei.utils</groupId>
     <artifactId>unit</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <name>unit</name>
     <description>单位</description>
     <url>https://github.com/xuxiaowei-com-cn/unit</url>
