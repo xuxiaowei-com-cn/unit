@@ -263,17 +263,22 @@ public final class DataSize implements Comparable<DataSize>, Serializable {
 	 * @author xuxiaowei
 	 */
     public String toStringLongUnit() {
-		if (this.bytes == 0) {
-			return "0B";
-		}
+        if (this.bytes == 0) {
+            return "0B";
+        }
+
+        long positive = this.bytes;
+        if (isNegative()) {
+            positive = -this.bytes;
+        }
 
         long b;
 
-        long t = this.bytes / BYTES_PER_TB;
+        long t = positive / BYTES_PER_TB;
 
         String tb = t > 0 ? t + "T" : "";
 
-        b = this.bytes % BYTES_PER_TB;
+        b = positive % BYTES_PER_TB;
         long g = b / BYTES_PER_GB;
         String gb = g > 0 ? g + "G" : "";
 
@@ -288,7 +293,9 @@ public final class DataSize implements Comparable<DataSize>, Serializable {
         b = b % BYTES_PER_KB;
         String bb = b > 0 ? b + "B" : "";
 
-        return tb + gb + mb + kb + bb;
+        String result = tb + gb + mb + kb + bb;
+
+        return isNegative() ? "-" + result : result;
     }
 
 	@Override
