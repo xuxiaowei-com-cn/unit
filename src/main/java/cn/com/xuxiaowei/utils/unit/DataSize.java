@@ -43,6 +43,7 @@ import java.util.regex.Pattern;
  *
  * @author Stephane Nicoll
  * @author Sam Brannen
+ * @author xuxiaowei
  * @since 5.1
  * @see DataUnit
  * @see <a href="https://github.com/spring-projects/spring-framework/blob/5.3.x/spring-core/src/main/java/org/springframework/util/unit/DataSize.java">DataSize</a>
@@ -241,6 +242,51 @@ public final class DataSize implements Comparable<DataSize>, Serializable {
 		return String.format("%dB", this.bytes);
 	}
 
+	/**
+	 * @author xuxiaowei
+	 */
+    public String toStringUnit() {
+        if (this.bytes < BYTES_PER_KB) {
+            return String.format("%dB", this.bytes);
+        } else if (this.bytes < BYTES_PER_MB) {
+            return String.format("%dK", this.bytes / BYTES_PER_KB);
+        } else if (this.bytes < BYTES_PER_GB) {
+            return String.format("%dM", this.bytes / BYTES_PER_MB);
+        } else if (this.bytes < BYTES_PER_TB) {
+            return String.format("%dG", this.bytes / BYTES_PER_GB);
+        } else {
+            return String.format("%dT", this.bytes / BYTES_PER_TB);
+        }
+    }
+
+	/**
+	 * @author xuxiaowei
+	 */
+    public String toStringLongUnit() {
+
+        long b;
+
+        long t = this.bytes / BYTES_PER_TB;
+
+        String tb = t > 0 ? t + "T" : "";
+
+        b = this.bytes % BYTES_PER_TB;
+        long g = b / BYTES_PER_GB;
+        String gb = g > 0 ? g + "G" : "";
+
+        b = b % BYTES_PER_GB;
+        long m = b / BYTES_PER_MB;
+        String mb = m > 0 ? m + "M" : "";
+
+        b = b % BYTES_PER_MB;
+        long k = b / BYTES_PER_KB;
+        String kb = k > 0 ? k + "K" : "";
+
+        b = b % BYTES_PER_KB;
+        String bb = b > 0 ? b + "B" : "";
+
+        return tb + gb + mb + kb + bb;
+    }
 
 	@Override
 	public boolean equals(Object other) {
